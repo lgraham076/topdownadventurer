@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://mvi88anempkr"]
+[gd_scene load_steps=2 format=3 uid="uid://mvi88anempkr"]
+
+[ext_resource type="PackedScene" uid="uid://bubjg2yhpc3lt" path="res://scenes/player.tscn" id="1_3cna3"]
 
 [node name="Game" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_3cna3")]
+position = Vector2(341, 184)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
