@@ -17,17 +17,19 @@ func animate()->void:
 	return
 
 func _physics_process(_delta: float) -> void:
-	
 	if Input.is_action_just_pressed("move_down"):
+		action = "run"
 		direction = "down"
 	elif Input.is_action_just_pressed("move_up"):
+		action = "run"
 		direction = "up"
 	elif Input.is_action_just_pressed("move_left"):
+		action = "run"
 		direction = "left"
 	elif Input.is_action_just_pressed("move_right"):
+		action = "run"
 		direction = "right"
-		
-	if Input.is_action_just_pressed("attack"):
+	elif Input.is_action_just_pressed("attack"):
 		action = "attack"
 		
 	animate()
