@@ -21,23 +21,23 @@ func animate()->void:
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("move_down"):
+	if Input.is_action_pressed("move_down"):
 		action = "run"
 		direction = "down"
 		velocity.y += 1
-	elif Input.is_action_just_pressed("move_up"):
+	elif Input.is_action_pressed("move_up"):
 		action = "run"
 		direction = "up"
 		velocity.y -= 1
-	elif Input.is_action_just_pressed("move_left"):
+	elif Input.is_action_pressed("move_left"):
 		action = "run"
 		direction = "left"
 		velocity.x -= 1
-	elif Input.is_action_just_pressed("move_right"):
+	elif Input.is_action_pressed("move_right"):
 		action = "run"
 		direction = "right"
 		velocity.x += 1
-	elif Input.is_action_just_pressed("attack"):
+	elif Input.is_action_pressed("attack"):
 		action = "attack"
 		
 	velocity = velocity.normalized() * SPEED
