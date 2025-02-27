@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://mvi88anempkr"]
+[gd_scene load_steps=3 format=3 uid="uid://mvi88anempkr"]
 
 [ext_resource type="PackedScene" uid="uid://bubjg2yhpc3lt" path="res://scenes/player.tscn" id="1_3cna3"]
+[ext_resource type="PackedScene" uid="uid://d2xajf2i4xuwl" path="res://scenes/maintown.tscn" id="2_5l8n6"]
 
 [node name="Game" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_3cna3")]
+z_index = 1
 position = Vector2(341, 184)
 scale = Vector2(3, 3)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="Overworld" parent="." instance=ExtResource("2_5l8n6")]
