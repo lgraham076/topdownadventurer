@@ -259,4 +259,5 @@ tile_map_data = PackedByteArray("AAABAAMAAAAGAAEAAAAFAAQAAAAGAAEAAAAGAAUAAAAGAAE
 tile_set = SubResource("TileSet_dyd10")
 
 [node name="Foreground" type="TileMapLayer" parent="Overworld"]
+tile_map_data = PackedByteArray("AAAeABkAAAAJAAUAAAA9ACUAAAAJAAUAAAAlACkAAAAJAAUAAAAvABgAAAAJAAUAAAAxACUAAAAJAAUAAAAmAAoAAAAJAAUAAAAPACgAAAAJAAUAAAA=")
 tile_set = SubResource("TileSet_dyd10")
