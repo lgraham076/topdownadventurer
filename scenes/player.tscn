@@ -582,14 +582,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ofcs"]
-radius = 6.0
-height = 14.0
+radius = 2.0
+height = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_uc0bs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_igweu")
 animation = &"idle_down"
 
