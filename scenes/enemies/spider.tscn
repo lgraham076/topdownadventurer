@@ -176,8 +176,8 @@ radius = 6.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sa813")
-animation = &"run"
-frame_progress = 0.944437
+animation = &"death"
+frame_progress = 0.466034
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

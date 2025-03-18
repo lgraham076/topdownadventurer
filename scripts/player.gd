@@ -6,23 +6,46 @@ const DEFAULT_ACTION := "idle"
 var direction := DEFAULT_DIRECTION
 var action := DEFAULT_ACTION
 
+
 const SPEED := 75.0
 
 func get_directedaction()->String:
 	return action + "_" + direction
 	
 func animate()->void:
+	if action == "attack":
+		get_hitbox().disabled = false
+	
 	$AnimatedSprite2D.animation = get_directedaction()
 	$AnimatedSprite2D.play()
 	await $AnimatedSprite2D.animation_finished
+	
 	action = DEFAULT_ACTION
 	return
+	
+func reset_hitboxes():
+	$HitUp.disabled = true
+	$HitDown.disabled = true
+	$HitLeft.disabled = true
+	$HitRight.disabled =true
+
+func get_hitbox()->CollisionShape2D:
+	if direction == "down":
+		return $HitDown
+	elif direction == "up":
+		return $HitUp
+	elif direction == "left":
+		return $HitLeft
+	else:
+		return $HitRight
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
+	reset_hitboxes()
 	
 	if Input.is_action_pressed("attack"):
 		action = "attack"
+		
 	elif Input.is_action_pressed("move_down"):
 		action = "run"
 		direction = "down"
