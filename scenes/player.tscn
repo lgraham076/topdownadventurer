@@ -1,7 +1,7 @@
 [gd_scene load_steps=136 format=3 uid="uid://bubjg2yhpc3lt"]
 
 [ext_resource type="Texture2D" uid="uid://bctpsx7gqequp" path="res://assets/MainCharacter/char_idle_down_anim_strip_6.png" id="1_tdyhv"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_uc0bs"]
+[ext_resource type="Script" uid="uid://ct1m1fuf3xibl" path="res://scripts/player.gd" id="1_uc0bs"]
 [ext_resource type="Texture2D" uid="uid://bdvm6nh2ss4r8" path="res://assets/MainCharacter/char_idle_left_anim_strip_6.png" id="2_322sk"]
 [ext_resource type="Texture2D" uid="uid://c6oja5beffust" path="res://assets/MainCharacter/char_attack_down_anim_strip_6.png" id="2_537v0"]
 [ext_resource type="Texture2D" uid="uid://bpvuvi6tec6t8" path="res://assets/MainCharacter/char_attack_left_anim_strip_6.png" id="3_fggt0"]
