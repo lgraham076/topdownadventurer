@@ -24,20 +24,20 @@ func animate()->void:
 	return
 	
 func reset_hitboxes():
-	$HitUp.disabled = true
-	$HitDown.disabled = true
-	$HitLeft.disabled = true
-	$HitRight.disabled =true
+	$Hurtbox/HitUp.disabled = true
+	$Hurtbox/HitDown.disabled = true
+	$Hurtbox/HitLeft.disabled = true
+	$Hurtbox/HitRight.disabled =true
 
 func get_hitbox()->CollisionShape2D:
 	if direction == "down":
-		return $HitDown
+		return $Hurtbox/HitDown
 	elif direction == "up":
-		return $HitUp
+		return $Hurtbox/HitUp
 	elif direction == "left":
-		return $HitLeft
+		return $Hurtbox/HitLeft
 	else:
-		return $HitRight
+		return $Hurtbox/HitRight
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO

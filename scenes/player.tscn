@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://bubjg2yhpc3lt"]
+[gd_scene load_steps=137 format=3 uid="uid://bubjg2yhpc3lt"]
 
 [ext_resource type="Texture2D" uid="uid://bctpsx7gqequp" path="res://assets/MainCharacter/char_idle_down_anim_strip_6.png" id="1_tdyhv"]
 [ext_resource type="Script" uid="uid://ct1m1fuf3xibl" path="res://scripts/player.gd" id="1_uc0bs"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cuk5xw8hrg8mt" path="res://assets/MainCharacter/char_pushing_left_anim_strip_6.png" id="15_fuegn"]
 [ext_resource type="Texture2D" uid="uid://bpyaxydxgnlgn" path="res://assets/MainCharacter/char_pushing_right_anim_strip_6.png" id="16_05c32"]
 [ext_resource type="Texture2D" uid="uid://33o2x3v87q2a" path="res://assets/MainCharacter/char_pushing_up_anim_strip_6.png" id="17_r4rps"]
+[ext_resource type="PackedScene" uid="uid://hfoyrxmjfdcy" path="res://scenes/utils/hurtbox.tscn" id="22_a38lo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082pc"]
 atlas = ExtResource("2_537v0")
@@ -885,17 +886,17 @@ animations = [{
 radius = 2.0
 height = 6.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ihq"]
-size = Vector2(34, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vffay"]
-size = Vector2(9, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn5gb"]
+size = Vector2(20, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxf0a"]
 size = Vector2(17, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn5gb"]
-size = Vector2(20, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vffay"]
+size = Vector2(9, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ihq"]
+size = Vector2(34, 18)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
@@ -912,24 +913,25 @@ frame_progress = 1.0
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6ofcs")
 
-[node name="HitDown" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3.5)
+[node name="Hurtbox" parent="." instance=ExtResource("22_a38lo")]
+
+[node name="HitLeft" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-3, 0)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_i2ihq")
-disabled = true
+shape = SubResource("RectangleShape2D_sn5gb")
 
-[node name="HitRight" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, -1)
-shape = SubResource("RectangleShape2D_vffay")
-disabled = true
-
-[node name="HitUp" type="CollisionShape2D" parent="."]
+[node name="HitUp" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0.5, -4.5)
 shape = SubResource("RectangleShape2D_bxf0a")
 disabled = true
 
-[node name="HitLeft" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 0)
+[node name="HitRight" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_vffay")
+disabled = true
+
+[node name="HitDown" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, 3.5)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_sn5gb")
+shape = SubResource("RectangleShape2D_i2ihq")
 disabled = true

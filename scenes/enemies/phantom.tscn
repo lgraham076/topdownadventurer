@@ -1,6 +1,7 @@
-[gd_scene load_steps=55 format=3 uid="uid://djxf4x73mkp17"]
+[gd_scene load_steps=57 format=3 uid="uid://djxf4x73mkp17"]
 
 [ext_resource type="Texture2D" uid="uid://rjq5us16jg7r" path="res://assets/Enemies/Phantom/phantom_death_anim_left_strip_8.png" id="1_km5ia"]
+[ext_resource type="Script" uid="uid://dqhhbbna0tbey" path="res://scripts/phantom.gd" id="1_yynti"]
 [ext_resource type="Texture2D" uid="uid://d0evv7ngm1bps" path="res://assets/Enemies/Phantom/phantom_death_anim_right_strip_8.png" id="2_m1a4o"]
 [ext_resource type="Texture2D" uid="uid://ee25eollwoq2" path="res://assets/Enemies/Phantom/phantom_hit_anim_left_strip_4.png" id="3_7dvp0"]
 [ext_resource type="Texture2D" uid="uid://i1g14hpilhyk" path="res://assets/Enemies/Phantom/phantom_hit_anim_right_strip_4.png" id="4_l72iv"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ce2igujglu8e3" path="res://assets/Enemies/Phantom/phantom_idle_anim_right_strip_4.png" id="6_fq0yn"]
 [ext_resource type="Texture2D" uid="uid://b176r4jkeqhee" path="res://assets/Enemies/Phantom/phantom_run_anim_left_strip_6.png" id="7_h7o4l"]
 [ext_resource type="Texture2D" uid="uid://j5psybs8prs6" path="res://assets/Enemies/Phantom/phantom_run_anim_right_strip_6.png" id="8_ujupw"]
+[ext_resource type="PackedScene" uid="uid://inmqvvwb8shc" path="res://scenes/utils/hitbox.tscn" id="9_xnr1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt725"]
 atlas = ExtResource("1_km5ia")
@@ -212,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sb7u6")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_left",
 "speed": 5.0
 }, {
@@ -241,7 +243,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yuuyw")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_right",
 "speed": 5.0
 }, {
@@ -258,7 +260,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gf8h5")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit_left",
 "speed": 5.0
 }, {
@@ -275,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_27lqk")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit_right",
 "speed": 5.0
 }, {
@@ -292,7 +294,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4i8s2")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_left",
 "speed": 5.0
 }, {
@@ -309,7 +311,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l35du")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_right",
 "speed": 5.0
 }, {
@@ -332,7 +334,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vj0f0")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_left",
 "speed": 5.0
 }, {
@@ -355,7 +357,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xwjrf")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_right",
 "speed": 5.0
 }]
@@ -363,14 +365,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvop"]
 radius = 6.0
 
-[node name="Phantom" type="CharacterBody2D"]
+[node name="Phantom" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_yynti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jd862")
-animation = &"idle_right"
-frame_progress = 0.349651
+animation = &"run_right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" parent="." instance=ExtResource("9_xnr1u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_4dvop")
