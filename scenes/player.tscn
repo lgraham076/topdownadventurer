@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cuk5xw8hrg8mt" path="res://assets/MainCharacter/char_pushing_left_anim_strip_6.png" id="15_fuegn"]
 [ext_resource type="Texture2D" uid="uid://bpyaxydxgnlgn" path="res://assets/MainCharacter/char_pushing_right_anim_strip_6.png" id="16_05c32"]
 [ext_resource type="Texture2D" uid="uid://33o2x3v87q2a" path="res://assets/MainCharacter/char_pushing_up_anim_strip_6.png" id="17_r4rps"]
-[ext_resource type="PackedScene" uid="uid://hfoyrxmjfdcy" path="res://scripts/utils/hurtbox.tscn" id="22_a38lo"]
+[ext_resource type="PackedScene" uid="uid://hfoyrxmjfdcy" path="res://scenes/utils/hurtbox.tscn" id="22_a38lo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082pc"]
 atlas = ExtResource("2_537v0")
