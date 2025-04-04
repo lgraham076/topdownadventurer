@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://yvfm35j0fujq"]
+
+[sub_resource type="GDScript" id="GDScript_sfivu"]
+script/source = "class_name health extends Node
+
+@export var hp :int = 1
+
+func damage(dmg: int)->void:
+    hp -= dmg
+"
+
+[node name="Health" type="Node"]
+script = SubResource("GDScript_sfivu")
