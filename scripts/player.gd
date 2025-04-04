@@ -21,7 +21,6 @@ func animate()->void:
 	await $AnimatedSprite2D.animation_finished
 	
 	action = DEFAULT_ACTION
-	return
 	
 func reset_hitboxes():
 	$Hurtbox/HitUp.disabled = true

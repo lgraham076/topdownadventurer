@@ -371,7 +371,7 @@ script = ExtResource("1_yynti")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jd862")
-animation = &"run_right"
+animation = &"death_left"
 
 [node name="Hitbox" parent="." instance=ExtResource("9_xnr1u")]
 
