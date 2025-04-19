@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://djxf4x73mkp17"]
+[gd_scene load_steps=59 format=3 uid="uid://djxf4x73mkp17"]
 
 [ext_resource type="Texture2D" uid="uid://rjq5us16jg7r" path="res://assets/Enemies/Phantom/phantom_death_anim_left_strip_8.png" id="1_km5ia"]
 [ext_resource type="Script" uid="uid://dqhhbbna0tbey" path="res://scripts/phantom.gd" id="1_yynti"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b176r4jkeqhee" path="res://assets/Enemies/Phantom/phantom_run_anim_left_strip_6.png" id="7_h7o4l"]
 [ext_resource type="Texture2D" uid="uid://j5psybs8prs6" path="res://assets/Enemies/Phantom/phantom_run_anim_right_strip_6.png" id="8_ujupw"]
 [ext_resource type="PackedScene" uid="uid://inmqvvwb8shc" path="res://scenes/utils/hitbox.tscn" id="9_xnr1u"]
+[ext_resource type="Script" uid="uid://cm12jcsokry51" path="res://scripts/utils/states/statemachine.gd" id="11_8acfs"]
+[ext_resource type="Script" uid="uid://cmexo0io648sh" path="res://scripts/utils/states/wander.gd" id="12_0ncig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt725"]
 atlas = ExtResource("1_km5ia")
@@ -365,7 +367,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvop"]
 radius = 6.0
 
-[node name="Phantom" type="Node2D"]
+[node name="Phantom" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_yynti")
 
@@ -379,3 +381,13 @@ hp = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_4dvop")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("11_8acfs")
+initial_state = NodePath("Wander")
+metadata/_custom_type_script = "uid://cm12jcsokry51"
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_0ncig")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://cmexo0io648sh"
