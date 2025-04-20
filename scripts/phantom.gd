@@ -35,6 +35,8 @@ func _physics_process(_delta: float) -> void:
 				direction = "left"
 			else:
 				direction = "right"
+	else:
+		velocity = Vector2.ZERO
 
 
 	animate()

@@ -28,9 +28,3 @@ func update(delta : float):
         randomize_wander()
         if enemy:
             enemy.velocity = move_direction * move_speed
-
-
-func physics_update(_delta : float):
-    print("Uodating psychics")
-    if enemy:
-        enemy.velocity = move_direction * move_speed

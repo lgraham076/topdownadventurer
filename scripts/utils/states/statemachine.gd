@@ -7,7 +7,6 @@ var current_state : State
 var states : Dictionary = {}
 
 func _ready():
-    print("Initializing statemachine")
     for child in get_children():
         if child is State:
             states[child.name] = child
