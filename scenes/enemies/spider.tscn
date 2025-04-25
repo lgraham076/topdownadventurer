@@ -1,9 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://co2mo2viaheoh"]
+[gd_scene load_steps=30 format=3 uid="uid://co2mo2viaheoh"]
 
 [ext_resource type="Texture2D" uid="uid://ccd6782stn7pp" path="res://assets/Enemies/Spider/spider_death_anim_all_dir_strip_8.png" id="1_8u018"]
 [ext_resource type="Texture2D" uid="uid://6ycefwm4l5xt" path="res://assets/Enemies/Spider/spider_hit_anim_all_dir_strip_4.png" id="2_hrxw3"]
 [ext_resource type="Texture2D" uid="uid://d2gifp858mmd" path="res://assets/Enemies/Spider/spider_idle_anim_all_dir_strip_4.png" id="3_mysqn"]
 [ext_resource type="Texture2D" uid="uid://c53ad78wbq6dw" path="res://assets/Enemies/Spider/spider_run_anim_all_dir_strip_4.png" id="4_q2ev6"]
+[ext_resource type="Script" uid="uid://bueubrlel5o3d" path="res://scripts/utils/hitbox.gd" id="5_mf3vg"]
+[ext_resource type="Script" uid="uid://cm12jcsokry51" path="res://scripts/utils/states/statemachine.gd" id="6_5s4wc"]
+[ext_resource type="Script" uid="uid://cmexo0io648sh" path="res://scripts/utils/states/wander.gd" id="7_t7m53"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kbua"]
 atlas = ExtResource("1_8u018")
@@ -171,14 +174,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvop"]
 radius = 6.0
 
-[node name="Phantom" type="CharacterBody2D"]
+[node name="Spider" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sa813")
-animation = &"death"
-frame_progress = 0.466034
+animation = &"run"
+frame_progress = 0.189464
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+script = ExtResource("5_mf3vg")
+metadata/_custom_type_script = "uid://bueubrlel5o3d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_4dvop")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_5s4wc")
+initial_state = NodePath("Wander")
+metadata/_custom_type_script = "uid://cm12jcsokry51"
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_t7m53")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://cmexo0io648sh"

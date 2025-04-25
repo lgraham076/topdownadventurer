@@ -1,5 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
+@export var sprite : AnimatedSprite2D
+
 const DEFAULT_DIRECTION := "right"
 const DEFAULT_ACTION := "idle"
 
@@ -14,9 +16,9 @@ func _ready():
 	$Hitbox.death.connect(death)
 
 func animate()->void:
-	$AnimatedSprite2D.animation = get_directedaction()
-	$AnimatedSprite2D.play()
-	await $AnimatedSprite2D.animation_finished
+	sprite.animation = get_directedaction()
+	sprite.play()
+	await sprite.animation_finished
 	
 	if action == "death":
 		queue_free()
