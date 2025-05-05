@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bubjg2yhpc3lt" path="res://scenes/player.tscn" id="1_3cna3"]
 [ext_resource type="PackedScene" uid="uid://216ssji80pha" path="res://scenes/main_town.tscn" id="2_rffa8"]
-[ext_resource type="PackedScene" uid="uid://djxf4x73mkp17" path="res://scenes/enemies/phantom.tscn" id="3_46tuf"]
 [ext_resource type="PackedScene" uid="uid://co2mo2viaheoh" path="res://scenes/enemies/spider.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://d0olfvqnkosdn" path="res://scenes/enemies/phantom.tscn" id="5_iywne"]
 
 [node name="Game" type="Node"]
 
@@ -17,9 +17,9 @@ zoom = Vector2(4.5, 4.5)
 
 [node name="MainTown" parent="." instance=ExtResource("2_rffa8")]
 
-[node name="Phantom" parent="." instance=ExtResource("3_46tuf")]
-position = Vector2(423, 228)
-scale = Vector2(1.5, 1.5)
-
 [node name="Spider2" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(330, 283)
+
+[node name="Phantom2" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(262, 196)
+scale = Vector2(1.25, 1.25)
